@@ -1,4 +1,21 @@
 <?
+function GetNSymb($source, $n)
+{
+	if($source == "")
+		return false;
+	$dist = "";
+	for ($i = 0; $i < $n; $i++)
+		$dist .=  $source[$i];
+	return $dist;
+}
+function DirUp ($path)
+{
+	$temp_arr = explode('/', $path);
+	if(($count = count($temp_arr)) < 2)
+		return false;
+	return GetNSymb($path, strlen($path) - strlen($temp_arr[$count-2]) - 1);
+}
+
 global $APPLICATION;
 $dir = $APPLICATION->GetCurDir();
 $page = $APPLICATION->GetCurPage();
